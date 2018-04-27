@@ -1,0 +1,46 @@
+body, html {
+
+    width: 350px;
+    height: 270px;
+
+    margin: auto;
+
+}
+
+.header, .footer {
+
+    background-color: #800000;
+    color: white;
+    width: 100%;
+
+}
+
+.footer {
+
+    font-size: 10px;
+    height: 40px;
+
+}
+
+.header h4 span {
+    color: #4d0000;
+}
+
+.main #valueInput {
+
+    width: 70%;
+
+}
+
+.popupResult {
+
+    display: none;
+    width: 230px;
+    height: 160px;
+    background-color: #ffc299;
+
+}
+
+#result {
+    font-family: 'PT Sans Narrow';
+}

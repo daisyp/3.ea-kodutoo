@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Currency Converter</title>
+
+        <link rel="stylesheet" href="./../lib/w3.css">
+        <link rel="stylesheet" href="./main.css">
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
+        <script src="./../lib/jquery.js" charset="utf-8"></script>
+
+    </head>
+    <body>
+        
+    <script src="./main.js" charset="utf-8"></script>
+        <div class="all">
+            <div class="w3-container w3-card-4 header">
+                <center>
+                    <h4>Cryptocurrency Converter</h4>
+                </center>
+            </div>
+            <br>
+            <div class="main">
+                <center>
+                    <input type="number" placeholder="Enter amount to convert" min="0" required id="valueInput">
+                    <br><br>
+                    <div class="options">
+                        <select id="convertFrom">
+                        </select>
+                        to
+                        <select id="convertTo">
+                        </select>
+                    </div>
+                    <br>
+                    <button type="button" class="w3-btn w3-red w3-round convertBtn" name="button" onclick="convert">Convert</button>
+                </center>
+            </div>
+            <div class="w3-container w3-display-bottommiddle footer">
+                <center><p id="footer_text">See the top 100 Cryptocurrencies by Market Capitalization on <a type="_blank" href="#">Coinmarketcap</a></p></center>
+            </div>
+        </div>
+        <div class="w3-display-middle w3-card-4 w3-round popupResult">
+            <div class="w3-display-middle">
+                <hr>
+                <center><h1 id="result">d</h1></center>
+                <hr>
+            </div>
+        </div>
+        
+    </body>
+</html>

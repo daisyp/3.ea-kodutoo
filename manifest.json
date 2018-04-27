@@ -1,0 +1,21 @@
+{
+
+    "manifest_version": 2,
+
+    "name": "Cryptocurrency Converter",
+    "description": "Convert FIAT to cryptocurrency ",
+    "version": "1.0",
+    
+    "icons": { "16": "public/images/crypto16.png",
+               "48": "public/images/crypto48.png",
+               "128": "public/images/crypto128.png" },
+
+    "browser_action": {
+
+        "default_icon": "public/images/crypto.png",
+        "default_popup": "public/scripts/index.html",
+        "default_title": "cryptoCurrency"
+
+    }
+
+}
