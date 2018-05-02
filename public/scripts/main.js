@@ -1,13 +1,39 @@
 var data;
 var to, from;
+var j, k;
 
 function result() {
 
     from = $('#convertFrom').find(":selected").text();
-
-    $.getJSON("https://api.coinmarketcap.com/v1/ticker/bitcoin/?convert=" + from, getData);
-
     to = $('#convertTo').find(":selected").text();
+
+    $.getJSON("https://api.coinmarketcap.com/v1/ticker/" + from, getFrom);
+    $.getJSON("https://api.coinmarketcap.com/v1/ticker/" + to, getTo);
+    
+    var discount = +((3/2).toFixed(2));
+    $('#result').text(discount);
+
+    let fadeTime = 200;
+    console.log("s" + j + "d" + k);
+
+    $('.all').css({"filter": "blur(5px)"})
+    $('.popupResult').fadeIn(fadeTime)
+    
+}
+
+function getFrom(json) {
+    for (elem in json) {
+        var j = json[elem]['price_usd']
+    }
+    console.log(j);
+    return parseInt(j);
+}
+function getTo(json) {
+    for (elem in json) {
+        var k = json[elem]['price_usd']
+    }
+    console.log(k);
+    return parseInt(k);
 }
 
 function getData(i) {
@@ -17,24 +43,15 @@ function getData(i) {
 
     //console.log(value);
 
-    let strResult = to == from ? value + " " + to : Number((i["rates"][to] * value).toFixed(4)) + " " + to;
-
-    $('#result').text(strResult);
-
-    let fadeTime = 200;
-
-    $('.all').css({"filter": "blur(5px)"})
-    $('.popupResult').fadeIn(fadeTime)
+    
 
 }
 
-function fillUpOptions(i) {
+function fillUpOptions(json) {
 
-    let keys = Object.keys(i["rates"]);
+    for(elem in json) {
 
-    for(i in keys) {
-
-        let newOption = "<option value='" + keys[i] + "'>" + keys[i] + "</option>"
+        let newOption = "<option value='" + json[elem]['id'] + "'>" + json[elem]['id'] + "</option>"
 
         $("#convertFrom").append(newOption);
         $("#convertTo").append(newOption);
@@ -42,8 +59,11 @@ function fillUpOptions(i) {
     }
 
 }
+
+
+
 //Options
-$.getJSON("https://api.coinmarketcap.com/v1/ticker/bitcoin/", fillUpOptions)
+$.getJSON("https://api.coinmarketcap.com/v1/ticker/?limit=10", fillUpOptions)
 
 $(document).ready( function() {
 

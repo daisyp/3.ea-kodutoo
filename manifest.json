@@ -12,7 +12,7 @@
 
     "browser_action": {
 
-        "default_icon": "public/images/crypto.png",
+        "default_icon": "public/images/crypto48.png",
         "default_popup": "public/scripts/index.html",
         "default_title": "cryptoCurrency"
 
