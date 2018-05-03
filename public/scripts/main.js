@@ -1,6 +1,6 @@
 var data;
 var to, from;
-var j, k;
+var skit, skat;
 
 function result() {
 
@@ -10,30 +10,38 @@ function result() {
     $.getJSON("https://api.coinmarketcap.com/v1/ticker/" + from, getFrom);
     $.getJSON("https://api.coinmarketcap.com/v1/ticker/" + to, getTo);
     
-    var discount = +((3/2).toFixed(2));
+}
+
+function calculateMath(from, to) {
+    var discount = (parseInt(from) / parseInt(to)).toFixed(2);
+
     $('#result').text(discount);
 
     let fadeTime = 200;
-    console.log("s" + j + "d" + k);
-
-    $('.all').css({"filter": "blur(5px)"})
-    $('.popupResult').fadeIn(fadeTime)
     
+
+    $('.all').css({"filter": "blur(5px)"});
+    $('.popupResult').fadeIn(fadeTime);
 }
+
 
 function getFrom(json) {
     for (elem in json) {
-        var j = json[elem]['price_usd']
+        var j = json[elem]['price_usd'];
     }
-    console.log(j);
+    console.log("Skit before: " + skit);
+    skit = j;
+    console.log("Skit now: " + skit);
     return parseInt(j);
 }
 function getTo(json) {
     for (elem in json) {
-        var k = json[elem]['price_usd']
+        var k = json[elem]['price_usd'];
     }
-    console.log(k);
-    return parseInt(k);
+    console.log("Skat before: " + skat);
+    skat = k;
+    console.log("Skat now: " + skat);
+    calculateMath(skit, skat);
 }
 
 function getData(i) {
@@ -51,7 +59,7 @@ function fillUpOptions(json) {
 
     for(elem in json) {
 
-        let newOption = "<option value='" + json[elem]['id'] + "'>" + json[elem]['id'] + "</option>"
+        let newOption = "<option value='" + json[elem]['id'] + "'>" + json[elem]['id'] + "</option>";
 
         $("#convertFrom").append(newOption);
         $("#convertTo").append(newOption);
